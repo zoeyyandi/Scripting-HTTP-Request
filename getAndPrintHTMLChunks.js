@@ -8,20 +8,12 @@ function getAndPrintHTMLChunks () {
   };
 
   https.get(requestOptions, function (response) {
-    response.setEncoding('utf8');
+      response.setEncoding('utf8');
 
-    var emptyString = ""
-    response.on('data', function (data) {
-      emptyString += data + '\n'
-      console.log(emptyString)
-    })
-
-    response.on('end', function() {
-      console.log('response stream complete.');
-    });
-
- });
-
+      response.on('data', function (data) {
+        console.log(data + '\n')
+      });
+  });
   /* Add your code here */
 
 }
