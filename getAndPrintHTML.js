@@ -10,7 +10,7 @@ function getAndPrintHTML () {
   https.get(requestOptions, function (response) {
     response.setEncoding('utf8');
 
-  var buffer = "";
+    var buffer = "";
     response.on('data', function (data) {
       buffer += data;
       console.log(buffer)

@@ -1,64 +1,26 @@
-// var https = require('https');
-
-// var options = {
-//     host: 'sytantris.github.io',
-//     path: '/http-examples/step3.html'
-//   };
-
-// var callback = function (response) {
-//     response.setEncoding('utf8');
-
-//   var buffer = "";
-//     response.on('data', function (data) {
-//       buffer += data;
-//       console.log(buffer)
-//     });
-//  };
-
-// function PrintHTML (options, callback) {
-//      https.get(options, callback)
-
-//   /* Add your code here */
-// }
-
-// PrintHTML(options, callback);
-
-
-
 var https = require('https');
 
 var options = {
     host: 'sytantris.github.io',
-    path: '/http-examples/step3.html'
+    path: '/http-examples/step4.html'
   };
 
-function printHTML (html) {
-  console.log(html);
-}
-
-function getAndPrintHTML2 (options, callback) {
-
+function getHTML (options, callback) {
 
   https.get(options, function (response) {
     response.setEncoding('utf8');
 
-  var buffer = "";
-
-  response.on('data', function (data) {
-    buffer += data;
-  });
-
-  response.on('end', function() {
-    callback(buffer)
-  })
+    var buffer = "";
+    response.on('data', function (data) {
+      buffer += data;
+      callback(buffer)  //
+    });
  });
-
-  /* Add your code here */
 }
 
-getAndPrintHTML2(options, printHTML);
-getAndPrintHTML2(options, function(buffer) {
-  console.log(buffer.length)
-});
+var printHTML = function (html) {
+  console.log(html);
+}
+  /* Add your code here */
 
-
+getHTML(options, printHTML);
